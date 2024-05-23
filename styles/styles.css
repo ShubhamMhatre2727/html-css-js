@@ -15,4 +15,16 @@
 #scroller section{
     height: 100vh;
     scroll-snap-align: start;
+
+    text-align: center;
+    display: grid;
+    place-content: center;
+}
+
+h1{
+    transition: transform s;
+}
+
+h1:hover{
+    transform: scale(2, 2) ;
 }
