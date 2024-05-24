@@ -8,13 +8,13 @@
 
 #scroller{
     height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type:y mandatory;
+    /* overflow-y: scroll;
+    scroll-snap-type:y mandatory; */
 }
 
 #scroller section{
     height: 100vh;
-    scroll-snap-align: start;
+    /* scroll-snap-align: start; */
 
     text-align: center;
     display: grid;
@@ -29,5 +29,22 @@ h1{
 h1:hover{
     transform: translate3d(0, -10px, 0) scale3d(1.1, 1.1, 1);
     text-shadow: 1px 1px 1px #fff;;
-    
+}
+
+#wheel2{
+    width: 400px;
+    aspect-ratio: 1;
+    background-color: #971111;
+
+    transform: rotate3d(0, 0, 1, 45deg);
+    opacity: 0;
+    transition: all 0.5s;
+    position: fixed;
+    top: 200px;
+    right: -200px;
+}
+
+#wheel2.active{
+    transform: rotate3d(0,0,1,-45deg);
+    opacity: 1;
 }
