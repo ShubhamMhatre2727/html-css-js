@@ -22,9 +22,12 @@
 }
 
 h1{
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
     transition: transform s;
 }
 
 h1:hover{
-    transform: scale(2, 2) ;
+    transform: translate3d(0, -10px, 0) scale3d(1.1, 1.1, 1);
+    text-shadow: 1px 1px 1px #fff;;
+    
 }
