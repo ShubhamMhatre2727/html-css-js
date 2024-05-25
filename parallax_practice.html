@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0; box-sizing: border-box;}
+        main{
+            height: 180vh;
+            background-color: aquamarine;
+        }
+
+        #circle{
+            width: 20vh;
+            aspect-ratio: 1;
+            background-color: black;
+
+            border: 40px dotted whitesmoke;
+            border-radius: 50%;
+            
+            position: fixed;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <main></main>
+    <div id="circle"></div>
+</body>
+<script>
+    const circle = document.querySelector("#circle");
+    window.addEventListener("DOMContentLoaded", scrollLoop);
+
+    var yScroll;
+    function scrollLoop(){
+        yScroll = window.scrollY;
+
+
+        circle.style.transform = `translate3d(0, ${yScroll}px, 0) rotate3d(0,0,1,${yScroll}deg)`;
+        requestAnimationFrame(scrollLoop);
+    }
+</script>
+</html>
