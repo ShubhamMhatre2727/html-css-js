@@ -2,23 +2,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: rgb(5, 5, 20);
-    color: #fff;
 }
 
 #scroller{
     height: 100vh;
-    /* overflow-y: scroll;
-    scroll-snap-type:y mandatory; */
+    overflow-y: scroll;
+    scroll-snap-type:y mandatory;
 }
 
 #scroller section{
     height: 100vh;
-    /* scroll-snap-align: start; */
+    scroll-snap-align: start;
 
     text-align: center;
     display: grid;
     place-content: center;
+
+    transition: all 0.2s ease-in;
 }
 
 h1{
@@ -34,17 +34,33 @@ h1:hover{
 #wheel2{
     width: 400px;
     aspect-ratio: 1;
-    background-color: #971111;
 
-    transform: rotate3d(0, 0, 1, 45deg);
-    opacity: 0;
-    transition: all 0.5s;
-    position: fixed;
-    top: 200px;
-    right: -200px;
-}
-
-#wheel2.active{
-    transform: rotate3d(0,0,1,-45deg);
     opacity: 1;
+    transition: all 0.3s ease-in-out;
+    position: fixed;
+    top: 175px;
+    right: -250px;
+    z-index: -1;
+
+    display: grid;
+    grid-template-areas: "div div"
+                            "div div";
+    gap: 80px;
 }
+#wheel2 div{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+ #wheel2 #one{
+    background-image: url("https://clipground.com/images/bonsai-png-1.png");
+    transform: rotate(45deg);
+ }
+ #wheel2 #two{
+    background-image: url("https://pnghq.com/wp-content/uploads/bonsai-tree-png-free-png-image-downloads-58371-1024x1024.png");
+    transform: rotate(135deg);
+ }
+ #wheel2 #three{
+    background-image: url("https://png.pngtree.com/png-clipart/20231016/original/pngtree-japan-famous-bonsai-tree-png-image_13323770.png");
+    transform: rotate(-45deg);
+ }

@@ -13,10 +13,13 @@ i += 2;
 requestAnimationFrame(animate);
 // =======================================================
 
+const sec1 = document.querySelector(".sec1")
+const sec2 = document.querySelector(".sec2")
 const sec3 = document.querySelector(".sec3")
 const wheel2 = document.querySelector("#wheel2")
+const scroller = document.querySelector("#scroller")
 
-window.addEventListener("scroll", function(e) {
+scroller.addEventListener("scroll", function(e) {
   window.requestAnimationFrame(scrolling);
 });
 
@@ -24,11 +27,23 @@ document.addEventListener("DOMContentLoaded", scrolling, false);
      
 
 function scrolling(e){
-  if(isPartiallyVisible(sec3)){
-    wheel2.classList.add("active");
+  if(isFullyVisible(sec1)){
+    wheel2.style.transform = `rotate3d(0,0,1,-135deg)`;
+    sec1.style.opacity = 1;
+    sec2.style.opacity = 0;
+    sec3.style.opacity = 0;
   }
-  else{
-    wheel2.classList.remove("active");
+  else if(isFullyVisible(sec2)){
+    wheel2.style.transform = `rotate3d(0,0,1,-45deg)`;
+    sec1.style.opacity = 0;
+    sec2.style.opacity = 1;
+    sec3.style.opacity = 0;
+  }
+  else if(isFullyVisible(sec3)){
+    wheel2.style.transform = `rotate3d(0,0,1,45deg)`;
+    sec1.style.opacity = 0;
+    sec2.style.opacity = 0;
+    sec3.style.opacity = 1;
   }
 }
 
@@ -40,4 +55,14 @@ function isPartiallyVisible(el) {
   var height = elementBoundary.height;
 
   return ((top + height >= 0) && (height + window.innerHeight >= bottom));
+}
+
+function isFullyVisible(el) {
+  var elementBoundary = el.getBoundingClientRect();
+
+  var top = elementBoundary.top;
+  var bottom = elementBoundary.bottom;
+  var height = elementBoundary.height;
+
+  return ((top >= 0) && (bottom <= height));
 }
